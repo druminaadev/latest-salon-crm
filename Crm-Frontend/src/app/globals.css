@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand */
+  --salon-50:  #F9EEF4;
+  --salon-100: #D88385;
+  --salon-200: #C96F9B;
+  --salon-400: #9D679F;
+  --salon-600: #6F5AA3;
+  --salon-900: #4C3A76;
+  --support-sage: #6F9F8F;
+  --support-gold: #C7923E;
+  --support-sky:  #6D91BF;
+  --support-plum: #5F4C86;
+
+  /* Layout */
+  --bg:             #ffffff;
+  --bg-secondary:   #fbf4f8;
+  --border:         #ead8e5;
+  --text-primary:   #24151a;
+  --text-secondary: #7a6470;
+  --hover:          #F9EEF4;
+
+  /* Sidebar */
+  --sidebar-bg:         #ffffff;
+  --sidebar-border:     #ead8e5;
+  --sidebar-active-bg:  #F9EEF4;
+  --sidebar-active-text:#6F5AA3;
+  --sidebar-text:       #6f5865;
+  --sidebar-hover:      #F9EEF4;
+
+  /* Header */
+  --header-bg:      #ffffff;
+  --header-border:  #ead8e5;
+
+  /* Accent bars / highlights */
+  --accent:         #9D679F;
+  --accent-light:   #F9EEF4;
+}
+
+.dark {
+  /* Layout */
+  --bg:             #171014;
+  --bg-secondary:   #221820;
+  --border:         #3c2b36;
+  --text-primary:   #fff7f7;
+  --text-secondary: #d7bdca;
+  --hover:          #2d2029;
+
+  /* Sidebar */
+  --sidebar-bg:         #171014;
+  --sidebar-border:     #3c2b36;
+  --sidebar-active-bg:  #2d2029;
+  --sidebar-active-text:#D88385;
+  --sidebar-text:       #ead7df;
+  --sidebar-hover:      #2d2029;
+
+  /* Header */
+  --header-bg:      #171014;
+  --header-border:  #3c2b36;
+
+  /* Accent */
+  --accent:         #9D679F;
+  --accent-light:   #2d2029;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+@keyframes dashboard-line-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes dashboard-area-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dashboard-dot-pulse {
+  0%, 100% {
+    opacity: 0.18;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.42;
+    transform: scale(1.35);
+  }
+}
+
+.dashboard-revenue-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: dashboard-line-draw 1.25s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.dashboard-revenue-area {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: dashboard-area-rise 0.9s ease-out 0.2s forwards;
+}
+
+.dashboard-revenue-dot,
+.dashboard-revenue-dot-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: r 180ms ease, stroke 180ms ease, fill 180ms ease, opacity 180ms ease;
+}
+
+.dashboard-revenue-dot-halo {
+  animation: dashboard-dot-pulse 2.2s ease-in-out infinite;
+}
